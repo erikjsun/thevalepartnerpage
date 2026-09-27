@@ -114,8 +114,20 @@
           const img = document.createElement('img');
           img.src = src;
           img.loading = 'lazy';
+          img.addEventListener('error', () => li.remove());  // drop a tile rather than show a broken image
           img.alt = (p.prunedCaption || p.caption || 'Instagram post by The VALE').slice(0, 140);
           a.appendChild(img);
+          const kind = p.mediaType === 'VIDEO' ? 'Reel' : p.mediaType === 'CAROUSEL_ALBUM' ? 'Album' : '';
+          if (kind) {
+            const tag = document.createElement('span');
+            tag.className = 'ig-kind';
+            tag.textContent = kind;
+            a.appendChild(tag);
+          }
+          const cap = document.createElement('span');
+          cap.className = 'ig-caption';
+          cap.textContent = (p.prunedCaption || p.caption || '').split('\n')[0];
+          a.appendChild(cap);
           li.appendChild(a);
           feed.appendChild(li);
         });
