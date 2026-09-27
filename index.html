@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Partner with The VALE</title>
+  <meta name="description" content="Back the value-driven leaders who will shape the next decade. Sponsor The VALE with unrestricted support.">
+  <meta property="og:title" content="Partner with The VALE">
+  <meta property="og:description" content="Grants fund our projects. Sponsors fund the movement. Back value-driven youth leadership in Europe.">
+  <meta property="og:image" content="assets/mountains.jpg">
+  <link rel="icon" href="assets/vale-mark.png">
+  <link rel="preload" href="assets/fonts/roboto-condensed-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a class="brand" href="https://www.thevale.eu" aria-label="The VALE home">
+      <img src="assets/vale-mark.png" alt="" width="36" height="38">
+      <span>The VALE</span>
+    </a>
+    <a class="btn btn--small" href="#talk">Let’s talk</a>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow reveal">Partner with The VALE</p>
+        <h1 class="reveal">
+          Back the leaders who’ll shape the
+          <span class="mark">next decade</span>
+        </h1>
+        <p class="lede reveal">
+          We train young, value-driven leaders from Europe’s civil society.
+          Grants fund our projects. <strong>Sponsors fund what grants can’t</strong> –
+          with no strings attached.
+        </p>
+        <div class="hero__actions reveal">
+          <a class="btn" href="#tiers">Become a sponsor</a>
+          <a class="link-arrow" href="#company">See who we work with</a>
+        </div>
+      </div>
+
+      <div class="hero__art" aria-hidden="true">
+        <svg viewBox="0 0 640 640" class="vale-scene">
+          <defs>
+            <clipPath id="disc"><circle cx="320" cy="330" r="286"/></clipPath>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FFFFFF"/>
+              <stop offset="1" stop-color="#FFF4E3"/>
+            </linearGradient>
+            <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#C0E8E5"/>
+              <stop offset="1" stop-color="#94DED8"/>
+            </linearGradient>
+            <filter id="shimmer" x="-10%" y="-10%" width="120%" height="120%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="2" seed="4" result="noise">
+                <animate class="anim" attributeName="baseFrequency" dur="9s" values="0.012 0.09;0.016 0.11;0.012 0.09" repeatCount="indefinite"/>
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+          </defs>
+
+          <g clip-path="url(#disc)">
+            <rect width="640" height="640" fill="url(#sky)"/>
+            <!-- back range -->
+            <polygon class="ridge ridge--back" points="0,372 70,290 118,330 196,214 262,300 318,238 372,312 438,196 520,318 574,262 640,330 640,372"/>
+            <!-- front range -->
+            <polygon class="ridge ridge--front" points="0,372 44,340 110,366 188,286 252,372 300,372 362,300 418,350 470,300 556,372 640,340 640,372"/>
+            <!-- water -->
+            <rect y="372" width="640" height="300" fill="url(#water)"/>
+            <!-- reflection -->
+            <g filter="url(#shimmer)" opacity=".55">
+              <g transform="translate(0 744) scale(1 -1)">
+                <polygon fill="#FFFFFF" points="0,372 70,290 118,330 196,214 262,300 318,238 372,312 438,196 520,318 574,262 640,330 640,372"/>
+                <polygon fill="#C0E8E5" points="0,372 44,340 110,366 188,286 252,372 300,372 362,300 418,350 470,300 556,372 640,340 640,372"/>
+              </g>
+            </g>
+            <!-- water lines -->
+            <g class="swell" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity=".9">
+              <line x1="120" y1="430" x2="260" y2="430"/>
+              <line x1="330" y1="462" x2="520" y2="462"/>
+              <line x1="70"  y1="502" x2="210" y2="502"/>
+              <line x1="280" y1="540" x2="420" y2="540"/>
+            </g>
+            <line x1="0" y1="372" x2="640" y2="372" stroke="#000" stroke-width="2"/>
+          </g>
+
+          <circle cx="320" cy="330" r="286" fill="none" stroke="#000" stroke-width="2.5"/>
+
+          <!-- sun + ripples -->
+          <g class="sun">
+            <circle class="ring ring--1" cx="486" cy="92" r="62"/>
+            <circle class="ring ring--2" cx="486" cy="92" r="62"/>
+            <circle class="ring ring--3" cx="486" cy="92" r="62"/>
+            <circle cx="486" cy="92" r="62" fill="#FFA023"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ============ LOGO WALL ============ -->
+    <section class="company" id="company">
+      <div class="section-head reveal">
+        <p class="eyebrow">In good company</p>
+        <h2>Trusted by funders and partners across Europe</h2>
+      </div>
+
+      <!-- To add a partner: copy one <li>, drop a transparent logo in assets/logos/ -->
+      <ul class="logos" role="list">
+        <li class="logo reveal"><img src="assets/logos/erasmus-plus.webp" alt="Erasmus+" loading="lazy"><span>Funder</span></li>
+        <li class="logo reveal"><img src="assets/logos/nordic-council-of-ministers.webp" alt="Nordic Council of Ministers" loading="lazy"><span>Funder</span></li>
+        <li class="logo reveal"><img src="assets/logos/fondation-hippocrene.webp" alt="Fondation Hippocrène" loading="lazy"><span>Funder</span></li>
+        <li class="logo reveal"><img src="assets/logos/lnu.webp" alt="LNU – Norwegian Children and Youth Council" loading="lazy"><span>Funder</span></li>
+        <li class="logo reveal"><img src="assets/logos/yfu.webp" alt="Youth For Understanding" loading="lazy"><span>Partner</span></li>
+        <li class="logo reveal"><img src="assets/logos/global-shapers.webp" alt="Global Shapers Community" loading="lazy"><span>Partner</span></li>
+        <li class="logo reveal"><img src="assets/logos/atlas-corps.webp" alt="Atlas Corps" loading="lazy"><span>Partner</span></li>
+        <li class="logo reveal"><img src="assets/logos/sor-varanger-utvikling.webp" alt="Sør-Varanger Utvikling" loading="lazy"><span>Partner</span></li>
+      </ul>
+      <p class="company__note reveal">…including <strong>13 Youth For Understanding organisations</strong> and <strong>6 Global Shapers hubs</strong> across Europe.</p>
+    </section>
+
+    <!-- ============ NUMBERS ============ -->
+    <section class="numbers" aria-label="Our impact in numbers">
+      <div class="numbers__grid">
+        <div class="stat reveal">
+          <span class="stat__n" data-count="133">133</span>
+          <span class="stat__l">alumni of our residential leadership courses</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__n" data-count="29">29</span>
+          <span class="stat__l">countries our alumni call home</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__n" data-count="1500" data-suffix="+">1,500+</span>
+          <span class="stat__l">people reached through our educational work</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__n" data-count="4.5" data-decimals="1">4.5</span>
+          <span class="stat__l">out of 5 – our latest Nordic funding bid, against a 2.3 average</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY ============ -->
+    <section class="why">
+      <div class="section-head reveal">
+        <p class="eyebrow">Why no-strings money</p>
+        <h2>Grants fund projects.<br><span class="outline">You fund the movement.</span></h2>
+      </div>
+      <ol class="why__list" role="list">
+        <li class="reveal">
+          <span class="why__num">01</span>
+          <h3>Continuity</h3>
+          <p>Grants end when projects end. Your support keeps the team, the alumni network and the next big idea alive in between.</p>
+        </li>
+        <li class="reveal">
+          <span class="why__num">02</span>
+          <h3>Access</h3>
+          <p>It covers the fees and travel that grants don’t, so money is never the reason a great young leader stays at home.</p>
+        </li>
+        <li class="reveal">
+          <span class="why__num">03</span>
+          <h3>Courage</h3>
+          <p>It lets us pilot what doesn’t fit a funding call yet – and turn the best experiments into the programmes of tomorrow.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ TIERS ============ -->
+    <!-- TODO(team): confirm tier amounts and benefits before publishing -->
+    <section class="tiers" id="tiers">
+      <div class="section-head reveal">
+        <p class="eyebrow">Choose your wave</p>
+        <h2>Every partnership starts small – and spreads</h2>
+      </div>
+
+      <div class="tiers__grid">
+        <article class="tier reveal">
+          <svg class="tier__icon" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="10" class="dot"/>
+            <circle cx="60" cy="60" r="28" class="r r1"/>
+          </svg>
+          <h3>Ripple</h3>
+          <p class="tier__price">€1,000</p>
+          <p class="tier__pitch">Get your name into the movement.</p>
+          <ul role="list">
+            <li>Your logo on our website and materials</li>
+            <li>Recognition in our annual impact report</li>
+            <li>A thank-you across our channels</li>
+          </ul>
+          <a class="btn btn--ghost" href="mailto:erik@thevale.eu?subject=Ripple%20sponsorship%20%E2%80%93%20The%20VALE">Start a ripple</a>
+        </article>
+
+        <article class="tier tier--featured reveal">
+          <p class="tier__badge">Most impact per euro</p>
+          <svg class="tier__icon" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="10" class="dot"/>
+            <circle cx="60" cy="60" r="28" class="r r1"/>
+            <circle cx="60" cy="60" r="44" class="r r2"/>
+          </svg>
+          <h3>Wave</h3>
+          <p class="tier__price">€5,000</p>
+          <p class="tier__pitch">Your people in the room.</p>
+          <ul role="list">
+            <li>Everything in Ripple</li>
+            <li>Seats at our public Symposium</li>
+            <li>Invitations to meet our community</li>
+            <li>Access to alumni talks and content</li>
+          </ul>
+          <a class="btn" href="mailto:erik@thevale.eu?subject=Wave%20sponsorship%20%E2%80%93%20The%20VALE">Make a wave</a>
+        </article>
+
+        <article class="tier reveal">
+          <svg class="tier__icon" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="10" class="dot"/>
+            <circle cx="60" cy="60" r="28" class="r r1"/>
+            <circle cx="60" cy="60" r="44" class="r r2"/>
+            <circle cx="60" cy="60" r="58" class="r r3"/>
+          </svg>
+          <h3>Tide</h3>
+          <p class="tier__price">€50,000</p>
+          <p class="tier__pitch">We build something together.</p>
+          <ul role="list">
+            <li>Everything in Wave</li>
+            <li>A tailored workshop for your team</li>
+            <li>A co-branded session or named scholarship</li>
+            <li>A direct line into how we grow</li>
+          </ul>
+          <a class="btn btn--ghost" href="mailto:erik@thevale.eu?subject=Tide%20partnership%20%E2%80%93%20The%20VALE">Turn the tide</a>
+        </article>
+      </div>
+      <p class="tiers__note reveal">Every partnership is tailored – and values alignment comes first.</p>
+    </section>
+
+    <!-- ============ QUOTE ============ -->
+    <section class="quote">
+      <figure class="reveal">
+        <blockquote>
+          <p>The VALE has definitely changed my life in a way that I still can’t even completely describe.</p>
+        </blockquote>
+        <figcaption>The VALE Course participant</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="talk" id="talk">
+      <div class="talk__inner reveal">
+        <h2>Let’s make waves</h2>
+        <p>The first step is a 20-minute call. No pitch deck, no pressure – just a conversation about what we could build together.</p>
+        <a class="btn btn--big" href="mailto:erik@thevale.eu?subject=Partnering%20with%20The%20VALE">Book a call with Erik</a>
+        <p class="talk__who">Erik Sundberg · Chair &amp; Co-Founder · <a href="mailto:erik@thevale.eu">erik@thevale.eu</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__brand">
+      <img src="assets/vale-mark.png" alt="" width="28" height="29">
+      <span>The Value-driven Advanced Leadership (The VALE) Association</span>
+    </div>
+    <p>Non-profit registered in Sweden · Org. no. 802542-5888</p>
+    <nav aria-label="Elsewhere">
+      <a href="https://www.thevale.eu">thevale.eu</a>
+      <a href="https://www.linkedin.com/company/69831953">LinkedIn</a>
+      <a href="https://www.instagram.com/thevalecourse/">Instagram</a>
+      <a href="https://thevale.eu/contact/privacypolicy/">Privacy</a>
+    </nav>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
