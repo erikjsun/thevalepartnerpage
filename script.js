@@ -59,19 +59,27 @@
     counters.forEach(el => co.observe(el));
   }
 
-  // Impact box: pointing at a step lights its ring
-  const rings = document.querySelectorAll('.impact__rings .iring');
-  document.querySelectorAll('.impact__steps li').forEach(step => {
-    const n = step.dataset.ring;
-    const light = on => {
-      step.classList.toggle('is-lit', on);
-      rings.forEach(r => r.classList.toggle('is-lit', on && r.classList.contains(`iring--${n}`)));
+  // Impact story: the step crossing the middle of the screen sets the map's stage
+  const story = document.querySelector('.impact__story');
+  if (story) {
+    const steps = [...story.querySelectorAll('.impact__steps li')];
+    const setStage = n => {
+      story.dataset.stage = n;
+      steps.forEach(s => s.classList.toggle('is-active', s.dataset.step === n));
     };
-    step.addEventListener('mouseenter', () => light(true));
-    step.addEventListener('mouseleave', () => light(false));
-    step.addEventListener('focus', () => light(true));
-    step.addEventListener('blur', () => light(false));
-  });
+    setStage('1');
+    if ('IntersectionObserver' in window) {
+      const so = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) setStage(e.target.dataset.step); });
+      }, {
+        // On phones the map sits over the top half, so the trigger line moves down to where the text is readable
+        rootMargin: window.matchMedia('(max-width: 960px)').matches ? '-72% 0px -27% 0px' : '-45% 0px -45% 0px',
+      });
+      steps.forEach(s => so.observe(s));
+    } else {
+      setStage('4');
+    }
+  }
 
   // Participant quotes take turns; pauses while hovered
   const quotes = [...document.querySelectorAll('.quotes figure')];
