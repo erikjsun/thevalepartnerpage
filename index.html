@@ -126,12 +126,12 @@
     <section class="numbers" aria-label="Our impact in numbers">
       <div class="numbers__grid">
         <div class="stat reveal">
-          <span class="stat__n" data-count="133">133</span>
-          <span class="stat__l">alumni of our residential leadership courses</span>
+          <span class="stat__n" data-count="131">131</span>
+          <span class="stat__l">young leaders through our residential courses since 2018</span>
         </div>
         <div class="stat reveal">
-          <span class="stat__n" data-count="29">29</span>
-          <span class="stat__l">countries our alumni call home</span>
+          <span class="stat__n" data-count="24">24</span>
+          <span class="stat__l">countries our participants call home</span>
         </div>
         <div class="stat reveal">
           <span class="stat__n" data-count="1500" data-suffix="+">1,500+</span>
@@ -141,6 +141,59 @@
           <span class="stat__n" data-count="4.5" data-decimals="1">4.5</span>
           <span class="stat__l">out of 5 – our latest Nordic funding bid, against a 2.3 average</span>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ IMPACT ============ -->
+    <!-- Figures from North Star (participant census 2018–2026) and the 2021 Erasmus+ final report -->
+    <section class="impact" id="impact">
+      <div class="impact__card reveal">
+        <div class="impact__intro">
+          <p class="eyebrow eyebrow--light">The impact of our programmes</p>
+          <h2>A course is where the ripples start</h2>
+          <p class="impact__lede">Our courses last weeks. What they set in motion lasts for years.</p>
+          <svg class="impact__rings" viewBox="0 0 280 280" aria-hidden="true">
+            <circle class="iring iring--4" cx="140" cy="140" r="130"/>
+            <circle class="iring iring--3" cx="140" cy="140" r="100"/>
+            <circle class="iring iring--2" cx="140" cy="140" r="70"/>
+            <circle class="iring iring--1" cx="140" cy="140" r="40"/>
+            <circle class="icore" cx="140" cy="140" r="14"/>
+            <text class="ilabel" x="140" y="96">01</text>
+            <text class="ilabel" x="140" y="66">02</text>
+            <text class="ilabel" x="140" y="36">03</text>
+            <text class="ilabel" x="140" y="6">04</text>
+          </svg>
+        </div>
+
+        <ol class="impact__steps" role="list">
+          <li data-ring="1" tabindex="0">
+            <span class="step__num">01</span>
+            <h3>They’re chosen</h3>
+            <p class="step__fig">131</p>
+            <p>young leaders from 24 countries, selected from 239 applicants across six cohorts since 2018.</p>
+          </li>
+          <li data-ring="2" tabindex="0">
+            <span class="step__num">02</span>
+            <h3>They teach it forward</h3>
+            <p class="step__fig">95%</p>
+            <p>of our 2021 cohort went on to teach others what they learned. Their 21 workshops reached 369 people that year alone.</p>
+          </li>
+          <li data-ring="3" tabindex="0">
+            <span class="step__num">03</span>
+            <h3>They step up</h3>
+            <p class="step__fig">90%+</p>
+            <p>felt more likely to take on a leadership role. A year on, half of their organisations had already seen their work or motivation grow – and none saw a decline.</p>
+          </li>
+          <li data-ring="4" tabindex="0">
+            <span class="step__num">04</span>
+            <h3>They come back</h3>
+            <p class="step__fig">14</p>
+            <p>of our participants have also helped run The VALE as team members, and almost half of all participants first heard of us from an alum or trainer. In December, alumni gather again in Hamburg.</p>
+            <a class="step__link" href="https://symposium.thevale.eu">The Symposium · Hamburg, 5 December</a>
+          </li>
+        </ol>
+
+        <p class="impact__source">Sources: The VALE participant census 2018–2026 and our 2021 Erasmus+ final report. <a href="https://www.thevale.eu/projects">See all our projects</a></p>
       </div>
     </section>
 
@@ -237,12 +290,25 @@
 
     <!-- ============ QUOTE ============ -->
     <section class="quote">
-      <figure class="reveal">
-        <blockquote>
-          <p>The VALE has definitely changed my life in a way that I still can’t even completely describe.</p>
-        </blockquote>
-        <figcaption>The VALE Course participant</figcaption>
-      </figure>
+      <!-- Anonymous participant evaluations; one shows at a time and they rotate -->
+      <div class="quotes reveal" aria-live="polite">
+        <figure class="is-active">
+          <blockquote><p>The VALE has definitely changed my life in a way that I still can’t even completely describe.</p></blockquote>
+          <figcaption>Participant, The VALE Course</figcaption>
+        </figure>
+        <figure>
+          <blockquote><p>It’s almost as if the week showed me some sort of direction.</p></blockquote>
+          <figcaption>Participant, The VALE Course 2026</figcaption>
+        </figure>
+        <figure>
+          <blockquote><p>Tough conversations are not as hard as they might seem before having them.</p></blockquote>
+          <figcaption>Participant, The VALE Course 2025</figcaption>
+        </figure>
+        <figure>
+          <blockquote><p>It was not just a course, but a process.</p></blockquote>
+          <figcaption>Participant, The VALE Course 2018</figcaption>
+        </figure>
+      </div>
     </section>
 
     <!-- ============ CTA ============ -->
@@ -253,6 +319,23 @@
         <a class="btn btn--big" href="mailto:erik@thevale.eu?subject=Partnering%20with%20The%20VALE">Book a call with Erik</a>
         <p class="talk__who">Erik Sundberg · Chair &amp; Co-Founder · <a href="mailto:erik@thevale.eu">erik@thevale.eu</a></p>
       </div>
+    </section>
+
+    <!-- ============ SOCIAL ============ -->
+    <!-- Live Instagram: set data-feed to a JSON feed URL (e.g. from Behold). Without it the follow card shows. -->
+    <section class="social" id="follow">
+      <div class="social__head reveal">
+        <div>
+          <p class="eyebrow">Follow the journey</p>
+          <h2><a href="https://www.instagram.com/thevalecourse/">@thevalecourse</a></h2>
+        </div>
+        <div class="social__links">
+          <a class="btn" href="https://www.instagram.com/thevalecourse/">Instagram</a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/company/69831953">LinkedIn</a>
+          <a class="btn btn--ghost" href="https://www.facebook.com/thevalecourse">Facebook</a>
+        </div>
+      </div>
+      <ul class="ig-feed" role="list" data-feed="" data-limit="6" hidden></ul>
     </section>
 
   </main>

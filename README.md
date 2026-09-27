@@ -24,6 +24,8 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 
 - **Add a partner logo:** drop a transparent PNG or WebP into `assets/logos/`, then copy one `<li class="logo">` in `index.html`. The tile scales and greys it automatically. It turns full colour on hover.
 - **Update the numbers:** edit both the `data-count` attribute and the visible text of each `.stat__n`. The visible text is what people see without JavaScript.
+- **Impact figures:** the numbers band and the impact box use North Star's participant census (`thevalenorthstar`, `lib/stats/fixtures/snapshot.json`) and the 2021 Erasmus+ final report (`config/evaluations.ts`). Update them from there, not from old briefs.
+- **Live Instagram:** set `data-feed` on the `.ig-feed` list to a JSON feed URL, for example from [Behold](https://behold.so). Both its v1 array and v2 `{ posts }` formats work. With no feed, the follow buttons show on their own.
 - **Change the tiers:** edit the three `<article class="tier">` blocks. Each button opens an email with the tier name in the subject.
 
 ## Brand

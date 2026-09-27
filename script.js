@@ -59,6 +59,63 @@
     counters.forEach(el => co.observe(el));
   }
 
+  // Impact box: pointing at a step lights its ring
+  const rings = document.querySelectorAll('.impact__rings .iring');
+  document.querySelectorAll('.impact__steps li').forEach(step => {
+    const n = step.dataset.ring;
+    const light = on => {
+      step.classList.toggle('is-lit', on);
+      rings.forEach(r => r.classList.toggle('is-lit', on && r.classList.contains(`iring--${n}`)));
+    };
+    step.addEventListener('mouseenter', () => light(true));
+    step.addEventListener('mouseleave', () => light(false));
+    step.addEventListener('focus', () => light(true));
+    step.addEventListener('blur', () => light(false));
+  });
+
+  // Participant quotes take turns; pauses while hovered
+  const quotes = [...document.querySelectorAll('.quotes figure')];
+  if (!calm && quotes.length > 1) {
+    let i = 0, paused = false;
+    const box = quotes[0].parentElement;
+    box.addEventListener('mouseenter', () => { paused = true; });
+    box.addEventListener('mouseleave', () => { paused = false; });
+    setInterval(() => {
+      if (paused || document.hidden) return;
+      quotes[i].classList.remove('is-active');
+      i = (i + 1) % quotes.length;
+      quotes[i].classList.add('is-active');
+    }, 6500);
+  }
+
+  // Live Instagram: renders posts from a JSON feed (Behold format, v1 array or v2 { posts })
+  const feed = document.querySelector('.ig-feed');
+  if (feed && feed.dataset.feed) {
+    fetch(feed.dataset.feed)
+      .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then(data => {
+        const posts = (Array.isArray(data) ? data : data.posts || []).slice(0, +feed.dataset.limit || 6);
+        posts.forEach(p => {
+          const src = p.sizes?.medium?.mediaUrl || (p.mediaType === 'VIDEO' ? p.thumbnailUrl : p.mediaUrl);
+          if (!src || !p.permalink) return;
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = p.permalink;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          const img = document.createElement('img');
+          img.src = src;
+          img.loading = 'lazy';
+          img.alt = (p.prunedCaption || p.caption || 'Instagram post by The VALE').slice(0, 140);
+          a.appendChild(img);
+          li.appendChild(a);
+          feed.appendChild(li);
+        });
+        if (feed.children.length) feed.hidden = false;
+      })
+      .catch(() => { /* feed unavailable: the follow buttons still stand on their own */ });
+  }
+
   // Every click makes a ripple – small ones, like the ones we hope to start
   if (!calm) {
     document.addEventListener('pointerdown', e => {
