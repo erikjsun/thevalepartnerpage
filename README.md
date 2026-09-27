@@ -1,6 +1,8 @@
 # The VALE – partner page
 
-A single, static page for reaching future sponsors. It replaces the Canva partner-brief PDFs. The main audience is sponsors giving unrestricted, no-strings-attached money.
+A single, static page for reaching future sponsors. It replaces the Canva partner-brief PDFs. The main audience is sponsors giving unrestricted money.
+
+Internally we're after unrestricted funding, but the page never says "no strings attached" to sponsors. Keep that wording off the page.
 
 There's no build step. Open `index.html` in a browser, or serve the folder with anything static:
 
@@ -12,7 +14,7 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 
 | Path | What it is |
 |---|---|
-| `index.html` | All content: hero, logo wall, numbers, why unrestricted funding, tiers, call to action |
+| `index.html` | All content: hero, logo wall, numbers, why sponsorship matters, tiers, call to action |
 | `styles.css` | Brand tokens (colours and fonts) at the top, then one block per section |
 | `script.js` | Scroll reveals, count-up numbers and click ripples (all switched off under `prefers-reduced-motion`) |
 | `assets/logos/` | Partner logos as transparent WebP, trimmed to their edges |
