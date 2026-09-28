@@ -309,17 +309,6 @@ section { position: relative; }
   padding: clamp(56px, 7vw, 96px) var(--gutter);
   overflow: hidden;
 }
-.numbers::before {               /* big faint circle echoing the mark */
-  content: "";
-  position: absolute;
-  width: 60vw;
-  max-width: 820px;
-  aspect-ratio: 1;
-  border: 2px solid rgba(0, 0, 0, .12);
-  border-radius: 50%;
-  right: -12vw;
-  top: -18vw;
-}
 .numbers__grid {
   position: relative;
   max-width: var(--max);
