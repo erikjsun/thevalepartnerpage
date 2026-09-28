@@ -32,9 +32,12 @@
     <section class="hero">
       <div class="hero__copy">
         <p class="eyebrow reveal">Partner with The VALE</p>
-        <h1 class="reveal">
-          Back the leaders who’ll shape the
-          <span class="mark">next decade</span>
+        <!-- Rows slide up one by one (from draft 3); LEADERS is outline only -->
+        <h1 class="hero__title">
+          <span class="row"><span class="up">Back the</span></span>
+          <span class="row"><span class="up outline-word">leaders</span></span>
+          <span class="row"><span class="up">who’ll shape</span></span>
+          <span class="row"><span class="up">the <em>next decade</em></span></span>
         </h1>
         <p class="lede reveal">
           We train young, value-driven leaders from Europe’s civil society.
@@ -46,17 +49,34 @@
         </div>
       </div>
 
+      <!-- The VALE mark, brought to life: it draws itself, the ridges rise out of the lake,
+           the sun comes up, and every layer drifts with the pointer at its own depth.
+           Hover the sun and it flares. All motion stops under prefers-reduced-motion. -->
       <div class="hero__art" aria-hidden="true">
         <svg viewBox="0 0 640 640" class="vale-scene">
           <defs>
             <clipPath id="disc"><circle cx="320" cy="330" r="286"/></clipPath>
             <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="#FFFFFF"/>
-              <stop offset="1" stop-color="#FFF4E3"/>
+              <stop offset=".62" stop-color="#FFF4E3"/>
+              <stop offset="1" stop-color="#FFE2B8"/>
             </linearGradient>
             <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="#C0E8E5"/>
               <stop offset="1" stop-color="#94DED8"/>
+            </linearGradient>
+            <radialGradient id="sun-halo">
+              <stop offset="0" stop-color="#FFA023" stop-opacity=".55"/>
+              <stop offset=".45" stop-color="#FFC880" stop-opacity=".22"/>
+              <stop offset="1" stop-color="#FFC880" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="dawn" cx=".76" cy=".62" r=".6">
+              <stop offset="0" stop-color="#FFC880" stop-opacity=".55"/>
+              <stop offset="1" stop-color="#FFC880" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="glitter" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FFFFFF" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
             </linearGradient>
             <filter id="shimmer" x="-10%" y="-10%" width="120%" height="120%">
               <feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="2" seed="4" result="noise">
@@ -67,38 +87,84 @@
           </defs>
 
           <g clip-path="url(#disc)">
-            <rect width="640" height="640" fill="url(#sky)"/>
+            <rect class="sky" width="640" height="640" fill="url(#sky)"/>
+            <rect class="dawn" width="640" height="400" fill="url(#dawn)"/>
+
+            <!-- birds crossing the sky -->
+            <g class="plx" style="--d:.5">
+              <g class="bird" style="--y:150px;--t:19s;--delay:-4s"><path d="M0 0 q7 -7 14 0 q7 -7 14 0"/></g>
+              <g class="bird" style="--y:190px;--t:24s;--delay:-14s;--s:.7"><path d="M0 0 q7 -7 14 0 q7 -7 14 0"/></g>
+              <g class="bird" style="--y:122px;--t:28s;--delay:-20s;--s:.55"><path d="M0 0 q7 -7 14 0 q7 -7 14 0"/></g>
+            </g>
+
             <!-- back range -->
-            <polygon class="ridge ridge--back" points="0,372 70,290 118,330 196,214 262,300 318,238 372,312 438,196 520,318 574,262 640,330 640,372"/>
-            <!-- front range -->
-            <polygon class="ridge ridge--front" points="0,372 44,340 110,366 188,286 252,372 300,372 362,300 418,350 470,300 556,372 640,340 640,372"/>
-            <!-- water -->
-            <rect y="372" width="640" height="300" fill="url(#water)"/>
-            <!-- reflection -->
-            <g filter="url(#shimmer)" opacity=".55">
-              <g transform="translate(0 744) scale(1 -1)">
-                <polygon fill="#FFFFFF" points="0,372 70,290 118,330 196,214 262,300 318,238 372,312 438,196 520,318 574,262 640,330 640,372"/>
-                <polygon fill="#C0E8E5" points="0,372 44,340 110,366 188,286 252,372 300,372 362,300 418,350 470,300 556,372 640,340 640,372"/>
+            <g class="plx" style="--d:.9">
+              <g class="rise rise--back">
+                <polygon class="ridge ridge--back" points="-40,420 -40,372 70,290 118,330 196,214 262,300 318,238 372,312 438,196 520,318 574,262 680,330 680,420"/>
               </g>
             </g>
+            <!-- front range -->
+            <g class="plx" style="--d:1.8">
+              <g class="rise rise--front">
+                <polygon class="ridge ridge--front" points="-40,420 -40,372 44,340 110,366 188,286 252,380 300,380 362,300 418,350 470,300 556,380 680,340 680,420"/>
+              </g>
+            </g>
+
+            <!-- the lake -->
+            <rect y="372" width="640" height="300" fill="url(#water)"/>
+            <g class="plx" style="--d:-1.2">
+              <g class="reflection" filter="url(#shimmer)" opacity=".55">
+                <g transform="translate(0 744) scale(1 -1)">
+                  <polygon fill="#FFFFFF" points="-40,372 70,290 118,330 196,214 262,300 318,238 372,312 438,196 520,318 574,262 680,330 680,372"/>
+                  <polygon fill="#C0E8E5" points="-40,372 44,340 110,366 188,286 252,372 300,372 362,300 418,350 470,300 556,372 680,340 680,372"/>
+                </g>
+              </g>
+            </g>
+
+            <!-- a path of light on the water under the sun -->
+            <g class="plx" style="--d:-.6">
+              <g class="glitter">
+                <path class="glitter__path" d="M470 378 L502 378 L540 600 L432 600 Z" fill="url(#glitter)"/>
+                <line x1="474" y1="392" x2="498" y2="392" style="--i:0"/>
+                <line x1="466" y1="410" x2="508" y2="410" style="--i:3"/>
+                <line x1="478" y1="430" x2="494" y2="430" style="--i:1"/>
+                <line x1="458" y1="452" x2="500" y2="452" style="--i:4"/>
+                <line x1="486" y1="474" x2="520" y2="474" style="--i:2"/>
+                <line x1="452" y1="498" x2="482" y2="498" style="--i:5"/>
+                <line x1="490" y1="522" x2="528" y2="522" style="--i:1"/>
+                <line x1="462" y1="548" x2="500" y2="548" style="--i:3"/>
+              </g>
+            </g>
+
             <!-- water lines -->
             <g class="swell" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity=".9">
               <line x1="120" y1="430" x2="260" y2="430"/>
-              <line x1="330" y1="462" x2="520" y2="462"/>
+              <line x1="300" y1="470" x2="420" y2="470"/>
               <line x1="70"  y1="502" x2="210" y2="502"/>
-              <line x1="280" y1="540" x2="420" y2="540"/>
+              <line x1="240" y1="548" x2="380" y2="548"/>
             </g>
-            <line x1="0" y1="372" x2="640" y2="372" stroke="#000" stroke-width="2"/>
+            <line class="horizon" x1="0" y1="372" x2="640" y2="372" pathLength="1"/>
           </g>
 
-          <circle cx="320" cy="330" r="286" fill="none" stroke="#000" stroke-width="2.5"/>
+          <circle class="rim" cx="320" cy="330" r="286" pathLength="1"/>
 
-          <!-- sun + ripples -->
-          <g class="sun">
-            <circle class="ring ring--1" cx="486" cy="92" r="62"/>
-            <circle class="ring ring--2" cx="486" cy="92" r="62"/>
-            <circle class="ring ring--3" cx="486" cy="92" r="62"/>
-            <circle cx="486" cy="92" r="62" fill="#FFA023"/>
+          <!-- the sun: halo, turning rays, ripples, core -->
+          <g class="plx" style="--d:-2.4">
+            <g class="sunrise">
+              <g class="sun">
+                <circle class="halo" cx="486" cy="92" r="150" fill="url(#sun-halo)"/>
+                <g class="rays">
+                  <line x1="486" y1="0" x2="486" y2="14"/><line x1="486" y1="170" x2="486" y2="184"/>
+                  <line x1="394" y1="92" x2="408" y2="92"/><line x1="564" y1="92" x2="578" y2="92"/>
+                  <line x1="421" y1="27" x2="431" y2="37"/><line x1="541" y1="147" x2="551" y2="157"/>
+                  <line x1="551" y1="27" x2="541" y2="37"/><line x1="431" y1="147" x2="421" y2="157"/>
+                </g>
+                <circle class="ring ring--1" cx="486" cy="92" r="62"/>
+                <circle class="ring ring--2" cx="486" cy="92" r="62"/>
+                <circle class="ring ring--3" cx="486" cy="92" r="62"/>
+                <circle class="core" cx="486" cy="92" r="62" fill="#FFA023"/>
+              </g>
+            </g>
           </g>
         </svg>
       </div>

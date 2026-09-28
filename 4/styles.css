@@ -153,36 +153,27 @@ h1, h2, h3 {
   margin: 0 auto;
   padding: clamp(24px, 4vw, 56px) var(--gutter) clamp(56px, 7vw, 104px);
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
   gap: clamp(24px, 5vw, 72px);
   align-items: center;
 }
-.hero h1 {
-  font-size: clamp(3.2rem, 6.4vw, 6.1rem);
+/* Title from draft 3: rows slide up in turn, LEADERS is an outline, NEXT DECADE is orange */
+.hero__title {
+  font-size: clamp(2.8rem, 5.3vw, 5.2rem);
   font-weight: 900;
-  line-height: .9;
-  margin-bottom: 1.6rem;
-  text-wrap: balance;
+  line-height: .88;
+  letter-spacing: -.02em;
+  margin-bottom: 1.8rem;
 }
-.mark {
-  position: relative;
-  white-space: nowrap;
-  z-index: 0;
-}
-.mark::after {
-  content: "";
-  position: absolute;
-  left: -.04em;
-  right: -.06em;
-  bottom: .04em;
-  height: .36em;
-  background: var(--orange);
-  z-index: -1;
-  transform-origin: left;
-  transform: scaleX(0) skewX(-8deg);
-  animation: swipe .9s .6s var(--ease) forwards;
-}
-@keyframes swipe { to { transform: scaleX(1) skewX(-8deg); } }
+.hero__title .row { display: block; overflow: hidden; white-space: nowrap; padding-top: .04em; }
+.hero__title .up { display: inline-block; transform: translateY(105%); animation: rowUp 1s cubic-bezier(.7, 0, .2, 1) forwards; }
+.hero__title .row:nth-child(2) .up { animation-delay: .08s; }
+.hero__title .row:nth-child(3) .up { animation-delay: .16s; }
+.hero__title .row:nth-child(4) .up { animation-delay: .24s; }
+@keyframes rowUp { to { transform: none; } }
+.hero__title em { font-style: normal; color: var(--orange); }
+/* White fill painted over a thick stroke: an outline with no inner overlaps from the variable font */
+.outline-word { color: var(--white); -webkit-text-stroke: 4px var(--black); paint-order: stroke fill; }
 
 .lede {
   font-size: clamp(1.1rem, 1.5vw, 1.3rem);
@@ -194,21 +185,44 @@ h1, h2, h3 {
 .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 2rem; }
 
 .hero__art { position: relative; }
-.vale-scene { width: 100%; height: auto; overflow: visible; }
+.vale-scene { width: 100%; height: auto; overflow: visible; --plx: 0; --ply: 0; }
+.vale-scene g { transform-box: view-box; }
+
+/* pointer parallax: each layer drifts by its own depth (--d) */
+.plx { transform: translate(calc(var(--plx) * var(--d) * 9px), calc(var(--ply) * var(--d) * 5px)); }
+
 .ridge--back  { fill: var(--teal-light); stroke: var(--black); stroke-width: 2; stroke-linejoin: round; }
 .ridge--front { fill: var(--teal); stroke: var(--black); stroke-width: 2; stroke-linejoin: round; }
-.swell line { animation: drift 7s ease-in-out infinite alternate; }
-.swell line:nth-child(2) { animation-duration: 9s; animation-delay: -3s; }
-.swell line:nth-child(3) { animation-duration: 8s; animation-delay: -5s; }
-.swell line:nth-child(4) { animation-duration: 10s; animation-delay: -2s; }
-@keyframes drift { from { transform: translateX(-26px); } to { transform: translateX(26px); } }
+.rim { fill: none; stroke: var(--black); stroke-width: 2.5; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.6s var(--ease) .1s forwards; }
+.horizon { stroke: var(--black); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.1s var(--ease) .5s forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
 
+/* opening: sky warms, ridges rise out of the lake, the sun comes up */
+.sky, .dawn { opacity: 0; animation: fadeIn 1.4s ease .2s forwards; }
+.dawn { animation: fadeIn 1.4s ease .2s forwards, glow 7s ease-in-out 2s infinite alternate; }
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes glow { from { opacity: 1; } to { opacity: .55; } }
+.rise { transform: translateY(150px); animation: rise 1.6s cubic-bezier(.16, 1, .3, 1) forwards; }
+.rise--back { animation-delay: .7s; }
+.rise--front { animation-delay: .95s; }
+@keyframes rise { to { transform: none; } }
+.reflection { opacity: 0; animation: reflect 1.4s ease 1.5s forwards; }
+@keyframes reflect { to { opacity: .55; } }
+.sunrise { transform: translateY(260px); opacity: 0; animation: sunrise 2.2s cubic-bezier(.16, 1, .3, 1) 1.2s forwards; }
+@keyframes sunrise { 60% { opacity: 1; } to { transform: none; opacity: 1; } }
+
+/* the sun keeps breathing, its rays turn, ripples roll out */
+.sun { transform-origin: 486px 92px; transition: transform .8s cubic-bezier(.34, 1.56, .64, 1); }
+.halo { transform-origin: 486px 92px; animation: breathe 5s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { transform: scale(.9); opacity: .8; } 50% { transform: scale(1.12); opacity: 1; } }
+.rays { stroke: var(--orange); stroke-width: 4; stroke-linecap: round; transform-origin: 486px 92px; animation: spin 40s linear infinite; opacity: .8; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.core { stroke: var(--black); stroke-width: 0; }
 .sun .ring {
   fill: none;
   stroke: var(--orange);
   stroke-width: 2;
-  transform-box: fill-box;
-  transform-origin: center;
+  transform-origin: 486px 92px;
   animation: ripple 4.5s var(--ease) infinite;
   opacity: 0;
 }
@@ -218,6 +232,31 @@ h1, h2, h3 {
   0%   { transform: scale(1);   opacity: .9; }
   100% { transform: scale(2.4); opacity: 0; }
 }
+/* the secret: hover the sun (or the scene) and it flares */
+.hero__art:hover .sun { transform: scale(1.1); }
+.hero__art:hover .rays { animation-duration: 8s; opacity: 1; }
+.hero__art:hover .sun .ring { animation-duration: 1.8s; }
+.hero__art:hover .glitter line { animation-duration: 1.1s; }
+.hero__art:hover .glitter__path { opacity: .75; }
+
+/* a glittering path of light on the water */
+.glitter { opacity: 0; animation: fadeIn 1.2s ease 2.4s forwards; }
+.glitter__path { opacity: .45; transition: opacity .6s; }
+.glitter line { stroke: #FFFFFF; stroke-width: 3; stroke-linecap: round; opacity: .2; animation: twinkle 2.4s ease-in-out infinite; animation-delay: calc(var(--i) * -.4s); }
+@keyframes twinkle { 0%, 100% { opacity: .15; } 50% { opacity: 1; } }
+
+/* water lines drift */
+.swell line { animation: drift 7s ease-in-out infinite alternate; }
+.swell line:nth-child(2) { animation-duration: 9s; animation-delay: -3s; }
+.swell line:nth-child(3) { animation-duration: 8s; animation-delay: -5s; }
+.swell line:nth-child(4) { animation-duration: 10s; animation-delay: -2s; }
+@keyframes drift { from { transform: translateX(-26px); } to { transform: translateX(26px); } }
+
+/* birds cross the sky, wings beating */
+.bird { transform: translate(-60px, var(--y)) scale(var(--s, 1)); animation: fly var(--t) linear var(--delay) infinite; }
+.bird path { fill: none; stroke: var(--black); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transform-origin: 14px 0; transform-box: fill-box; animation: flap .9s ease-in-out infinite alternate; }
+@keyframes fly { to { transform: translate(700px, calc(var(--y) - 40px)) scale(var(--s, 1)); } }
+@keyframes flap { to { transform: scaleY(.35); } }
 
 /* ---------- section heads ---------- */
 section { position: relative; }
@@ -827,7 +866,7 @@ section { position: relative; }
 }
 .marquee li:has(span) img { margin-bottom: 8%; }
 
-/* ---------- cursor (from draft 3): a dot that inverts whatever it passes over ---------- */
+/* ---------- cursor (from draft 3): teal over light backgrounds, orange over teal or dark ones ---------- */
 .cursor {
   position: fixed;
   left: 0;
@@ -837,12 +876,14 @@ section { position: relative; }
   height: 18px;
   margin: -9px 0 0 -9px;
   border-radius: 50%;
-  background: var(--orange);
+  background: var(--teal);
   pointer-events: none;
-  mix-blend-mode: difference;
+  mix-blend-mode: multiply;
   opacity: 0;
-  transition: width .35s cubic-bezier(.34, 1.56, .64, 1), height .35s cubic-bezier(.34, 1.56, .64, 1), margin .35s cubic-bezier(.34, 1.56, .64, 1), opacity .3s;
+  transition: width .35s cubic-bezier(.34, 1.56, .64, 1), height .35s cubic-bezier(.34, 1.56, .64, 1), margin .35s cubic-bezier(.34, 1.56, .64, 1), opacity .3s, background-color .3s;
 }
+.cursor[data-tone="orange"] { background: var(--orange); mix-blend-mode: normal; }
+.cursor[data-tone="teal-solid"] { mix-blend-mode: normal; }
 .cursor.is-on { opacity: 1; }
 .cursor.is-big { width: 84px; height: 84px; margin: -42px 0 0 -42px; }
 @media (hover: none) { .cursor { display: none; } }
@@ -886,6 +927,11 @@ section { position: relative; }
 
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
+  .hero__title .up, .rise, .sunrise { transform: none !important; }
+  .sky, .dawn, .sunrise, .glitter { opacity: 1 !important; }
+  .reflection { opacity: .55 !important; }
+  .rim, .horizon { stroke-dashoffset: 0 !important; }
+  .bird { display: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
   .mark::after { transform: scaleX(1) skewX(-8deg); }

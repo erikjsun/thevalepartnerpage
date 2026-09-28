@@ -171,14 +171,30 @@
     requestAnimationFrame(drift);
   }
 
-  // Cursor dot that swells over anything clickable (mouse and trackpad only)
+  // Cursor dot that swells over anything clickable (mouse and trackpad only).
+  // Teal over light backgrounds (multiplied, so text shows through), orange over teal or dark ones.
   const cursor = document.querySelector('.cursor');
   if (cursor && !calm && window.matchMedia('(hover: hover)').matches) {
+    const rgb = c => (c.match(/[\d.]+/g) || []).map(Number);
+    const backdrop = el => {
+      for (; el && el !== document.documentElement; el = el.parentElement) {
+        const [r, g, b, a = 1] = rgb(getComputedStyle(el).backgroundColor);
+        if (a > .5) return [r, g, b];
+      }
+      return [255, 255, 255];
+    };
+    const tone = ([r, g, b]) => {
+      const light = (.299 * r + .587 * g + .114 * b) / 255;
+      const tealish = g > r + 40 && b > r + 30;
+      const orangeish = r > 200 && b < 140 && r - b > 100;
+      return light < .45 || tealish ? 'orange' : orangeish ? 'teal-solid' : 'teal';
+    };
     let cx = 0, cy = 0, tx = 0, ty = 0;
     document.addEventListener('pointermove', e => {
       tx = e.clientX; ty = e.clientY;
       cursor.classList.add('is-on');
       cursor.classList.toggle('is-big', !!e.target.closest('a, button, .marquee li, .tier, .stat'));
+      cursor.dataset.tone = tone(backdrop(e.target));
     });
     document.documentElement.addEventListener('pointerleave', () => cursor.classList.remove('is-on'));
     const follow = () => {
@@ -187,6 +203,24 @@
       requestAnimationFrame(follow);
     };
     requestAnimationFrame(follow);
+  }
+
+  // Hero mark: every layer drifts against the pointer at its own depth
+  const scene = document.querySelector('.vale-scene');
+  if (scene && !calm && window.matchMedia('(pointer: fine)').matches) {
+    let px = 0, py = 0, qx = 0, qy = 0, raf = 0;
+    const tick = () => {
+      raf = 0;
+      qx += (px - qx) * .06; qy += (py - qy) * .06;
+      scene.style.setProperty('--plx', qx.toFixed(4));
+      scene.style.setProperty('--ply', qy.toFixed(4));
+      if (Math.abs(px - qx) > .001 || Math.abs(py - qy) > .001) raf = requestAnimationFrame(tick);
+    };
+    window.addEventListener('pointermove', e => {
+      px = e.clientX / innerWidth * 2 - 1;
+      py = e.clientY / innerHeight * 2 - 1;
+      if (!raf) raf = requestAnimationFrame(tick);
+    }, { passive: true });
   }
 
   // Every click makes a ripple – small ones, like the ones we hope to start

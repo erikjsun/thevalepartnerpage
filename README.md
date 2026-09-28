@@ -19,7 +19,7 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 | `script.js` | Scroll reveals, count-up numbers and click ripples (all switched off under `prefers-reduced-motion`) |
 | `assets/logos/` | Partner logos as transparent WebP, trimmed to their edges |
 | `assets/fonts/` | Self-hosted Roboto and Roboto Condensed (no Google Fonts request, so no GDPR issue) |
-| `1/` – `4/` | Design drafts of the same content, served at `/1` to `/4` (not indexed by search engines). 1 is calm and classy, 2 is scroll-driven and animated, 3 is loud and bold, and 4 is this page with draft 2’s drifting logo bubbles, draft 3’s cursor, and bigger titles. Each has its own `index.html`, stylesheet and `script.js`, and shares `assets/`. A switcher in the bottom-right corner jumps between them |
+| `1/` – `4/` | Design drafts of the same content, served at `/1` to `/4` (not indexed by search engines). 1 is calm and classy, 2 is scroll-driven and animated, 3 is loud and bold, and 4 is this page with an animated hero mark (after North Star’s valley), draft 3’s title and cursor, draft 2’s drifting logo bubbles, and bigger titles. Each has its own `index.html`, stylesheet and `script.js`, and shares `assets/`. A switcher in the bottom-right corner jumps between them |
 
 ## Common edits
 
