@@ -578,7 +578,7 @@ section { position: relative; }
   border-radius: 999px;
 }
 .tier__icon { width: 88px; height: 88px; margin-bottom: 1rem; overflow: visible; }
-.tier__icon .dot { fill: var(--orange); stroke: var(--black); stroke-width: 2; }
+.tier__icon .dot { fill: var(--teal); stroke: var(--black); stroke-width: 2; }
 .tier__icon .r {
   fill: none;
   stroke: var(--black);
